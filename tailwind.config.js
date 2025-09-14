@@ -27,6 +27,8 @@ export default {
       },
       fontFamily: {
         'general': ['GeneralSans-Variable', 'sans-serif'],
+        'abeezee': ['ABeeZee', 'sans-serif'],
+        'lexend': ['Lexend Deca', 'sans-serif'],
         'grotesk': ['CabinetGrotesk-Variable', 'sans-serif'],
       },
       colors: {

@@ -1,65 +1,66 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import HomePage from './components/HomePage';
+import ProjectDetail from './components/ProjectDetail';
+import Layout from './components/Layout';
+import LoadingScreen from "./components/LoadingScreen";
+import './index.css';
 
-import NavBar from "./components/ui/NavBar";
-import Hero from "./components/homepage/Hero";
-import Role from "./components/homepage/Role";
-import About from "./components/homepage/About";
-import Services from "./components/homepage/Services";
-import Works from "./components/homepage/Works";
-import Contact from "./components/homepage/Contact";
-import Footer from "./components/ui/Footer";
+gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
- 
-  gsap.registerPlugin(ScrollTrigger);
+  const [showLoading, setShowLoading] = useState(false);
+  const [startHeroAnimation, setStartHeroAnimation] = useState(false);
+  const [isCheckingFirstVisit, setIsCheckingFirstVisit] = useState(true);
 
-  const sectionRefs = useRef([]); // Creating a sectionRefs array
-
-  // Scrub animation of section headings
   useEffect(() => {
-    //TODO Learn useContext and useRef here
-    const sectionHeadings = document.querySelectorAll(".section-heading");
-    sectionHeadings.forEach((heading) => {
-      const headings = heading.querySelectorAll(".heading");
-
-      headings.forEach((individualHeading) => {
-        ScrollTrigger.create({
-          trigger: heading,
-          start: "top 550px",
-          end: "bottom 550px",
-          animation: gsap.to(individualHeading, {
-            opacity: 1,
-            y: 0,
-            ease: "power4.out",
-            duration: 1,
-          }),
-          toggleActions: "play none none none",
-
-        });
-        ScrollTrigger.refresh()
-      });
-    });
+    // Check if user has visited before
+    const hasVisited = localStorage.getItem('hasVisitedPortfolio');
+    
+    if (!hasVisited) {
+      // First time visitor - show loading screen
+      setShowLoading(true);
+      // Mark as visited
+      localStorage.setItem('hasVisitedPortfolio', 'true');
+    } else {
+      // Returning visitor - skip loading screen
+      setStartHeroAnimation(true);
+    }
+    
+    setIsCheckingFirstVisit(false);
   }, []);
 
-  
+  const handleLoadingComplete = () => {
+    setShowLoading(false);
+    setStartHeroAnimation(true);
+  };
+
+  // Don't render anything until we've checked localStorage
+  if (isCheckingFirstVisit) {
+    return <div className="bg-secondary-100 min-h-screen"></div>;
+  }
 
   return (
     <div className="bg-secondary-100">
-      <NavBar sectionRefs={sectionRefs.current} />{" "}
-      {/* passing sectionRefs props to give access to Navbar, Navbar can then access the props which have access to the array of sectionRef and loop over it */}
-      <Hero />
-      <main className="px-5 md:px-10 xl:px-20 2xl:px-28">
-        <Role forwardedRef={(el) => (sectionRefs.current[0] = el)} />{" "}
-        {/* forwardedRef props to pass into the child component to access the ref, then this will go into the useRef array  */}
-        <About />
-        <Services />
-        <Works forwardedRef={(el) => (sectionRefs.current[1] = el)} />
-        <Contact />
-      </main>
-      <Footer />
+      {showLoading && (
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+      )}
+      
+      {!showLoading && (
+        <Router>
+          <Layout>
+            <Routes>
+              <Route 
+                path="/" 
+                element={<HomePage startHeroAnimation={startHeroAnimation} />} 
+              />
+              <Route path="/project/:projectSlug" element={<ProjectDetail />} />
+            </Routes>
+          </Layout>
+        </Router>
+      )}
     </div>
   );
 };

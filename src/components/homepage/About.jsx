@@ -54,25 +54,17 @@ export default function About() {
               ref={heading}
               className="translate-y-10 text-heading-3 2xl:text-7xl font-semibold leading-tight opacity-0"
             >
-              A brief intro, who am I?
+              Who&apos;s Vu
+?
             </h3>
             <p ref={body} className=" translate-y-10 text-body-1 2xl:text-4xl opacity-0">
-              I am an independent frontend developer, UI/UX designer and creator based in
-              Melbourne, Australia.
+              I am a multidisciplinary designer who is currently studying Systems Design Engineering at the University of Waterloo.
               <br></br>
-              <br></br>I specialize in crafting elevated, intuitive, and
-              minimalistic designs for startups and small businesses to help
-              them stand out in the digital landscape with a powerful impact. 😎
+              <br></br>I specialize in crafting intuitive and impactful digital experiences that help startups stand out and connect with their audiences
               <br></br>
               <br></br>
-              When I am not developing or designing, I enjoy creating videos
-              that talk about frontend development, productivity and design on{" "}
-              <a
-                className="underline duration-300 ease-in-out hover:text-secondary-700"
-                href="https://www.youtube.com/channel/UCBOAB9RV647G93GxLhEXleA"
-              >
-                YouTube 📸
-              </a>
+              Beyond the screen, I love creating videos, exploring the outdoors, and travelling to discover new perspectives. And when I slow down, you will usually find me getting checkmated at a local park. 
+           
             </p>
           </div>
         </div>
