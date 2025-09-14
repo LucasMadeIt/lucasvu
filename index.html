@@ -3,35 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preload" as="image" href="src/assets/images/profile.webp" />
-  <link rel="preload" as="image" href="/src/assets/images/godaddy-desktop.webp" />
-  <link rel="preload" as="image" href="src/assets/images/acc-square.webp"/>
-  <link rel="preload" as="image" href="src/assets/images/ib-group-desktop.webp" />
-  <link rel="preload" as="image" href="src/assets/images/memento-desktop.webp" />
-  <link rel="preload" as="image" href="src/assets/images/sunnyside-desktop.webp" />
+  
+  <!-- Only preload images that actually exist in your project -->
+  <link rel="preload" as="image" href="/src/assets/images/profile.webp" />
+  <link rel="preload" as="image" href="/ellen-persona.png" />
+  <link rel="preload" as="image" href="/mikasa-persona.png" />
+  <link rel="preload" as="image" href="/kindro.png" />
+  <link rel="preload" as="image" href="/passionnails.png" />
+  <link rel="preload" as="image" href="/elements.png" />
+  <link rel="preload" as="image" href="/userflow-1.png" />
+  <link rel="preload" as="image" href="/userflow-2.png" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:url" content="https://huyng.xyz" />
+  <meta property="og:url" content="https://lucasmadeit.github.io/lucasvu/" />
   <meta
     name="description"
     content="An independent developer and designer specialized in empowering startups and small businesses. Find your space in the digital landscape."
   />
   <meta property="og:title" content="Lucas Vu | Product Designer" />
-  <meta property="og:image" content="https://media.licdn.com/dms/image/D5603AQG912ghef3ekA/profile-displayphoto-shrink_800_800/0/1683811495783?e=1692230400&v=beta&t=tWnnx63g3Tx-yLwtg0qk8cy_6gBasu1aSjwD15cSyjQ" />
+  <meta property="og:image" content="https://lucasmadeit.github.io/lucasvu/src/assets/images/profile.webp" />
   <meta
     property="og:description"
     content="I create elevating digital experiences that inspire and connect with people through design and development"
   />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#000000" />
+  
   <title>Lucas Vu • Product Designer</title>
 </head>
-  <body>
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="text" name="email" />
-      <textarea name="message"></textarea>
-    </form>
+<body>
+  <!-- Netlify form for contact -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="text" name="email" />
+    <textarea name="message"></textarea>
+  </form>
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
