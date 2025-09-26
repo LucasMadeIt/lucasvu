@@ -139,7 +139,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span>lucasvu26@gmail.com</span>
+                <span>l3vu@uwaterloo.ca</span>
                 <span className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
               </a>
              
